@@ -5,7 +5,7 @@ const Header =()=> {
     <header>
       <div className='title'>
         <h1>SWAPI-Box</h1>
-        <button>View Favorites <span>0</span></button>
+        <button className='favorites'>View Favorites <span>0</span></button>
       </div>
         <hr></hr>
       <nav>
