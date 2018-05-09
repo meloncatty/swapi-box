@@ -1,0 +1,19 @@
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 55rem;
+}
+
+.favorites {
+  align-content: flex-end;
+}
+
+
+header {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
