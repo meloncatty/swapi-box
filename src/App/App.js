@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SplashPage from '../SplashPage/SplashPage'
 import Header from '../Header/Header'
-import './App.sass';
+import './App.css';
 
 class App extends Component {
   render() {
