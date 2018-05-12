@@ -3,6 +3,7 @@ import LandingPage from '../LandingPage/LandingPage'
 import Header from '../Header/Header'
 import './App.css';
 import FetchData from '../Helpers/FetchData.js'
+import SelectedCategory from '../SelectedCategory/SelectedCategory'
 
 const apiInfo = new FetchData()
 
@@ -11,18 +12,27 @@ class App extends Component {
     super()
 
     this.state = {
-      filmText: []
+      filmText: [],
+      people: []
     }
   }
 
   componentWillMount() {
     this.filmInfo()
+    this.peopleInfo()
   }
 
   filmInfo = async() => {
-    const callFetch = await apiInfo.fetchInfo('films')
+    const callFetch = await apiInfo.gatherFilmCrawl('films')
     this.setState({
-      filmText: apiInfo.info
+      filmText: apiInfo.filmText
+    })
+  }
+
+  peopleInfo = async() => {
+    const callFetch = await apiInfo.fetchPeople('people')
+    this.setState({
+      people: apiInfo.people
     })
   }
 
@@ -30,7 +40,8 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <LandingPage filmText={this.state.filmText} />
+        
+        <SelectedCategory people={this.state.people} />
       </div>
     );
   }
