@@ -1,6 +1,7 @@
 import React from 'react'
 
-const Header =()=> {
+const Header =(props)=> {
+  
   return (
     <header>
       <div className='title'>
@@ -9,7 +10,7 @@ const Header =()=> {
       </div>
         <hr></hr>
       <nav>
-        <button>People</button>
+        <button onClick={props.peopleInfo}>People</button>
         <button>Planets</button>
         <button>Vehicles</button>
       </nav>
