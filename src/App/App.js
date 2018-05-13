@@ -19,7 +19,6 @@ class App extends Component {
 
   componentWillMount() {
     this.filmInfo()
-    this.peopleInfo()
   }
 
   filmInfo = async() => {
@@ -39,9 +38,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
-        
-        <SelectedCategory people={this.state.people} />
+        {!this.state.people.length
+          ? <div>
+              <Header peopleInfo={this.peopleInfo}/>
+              <LandingPage filmText={this.state.filmText}/>
+            </div>
+          : <div>
+              <Header peopleInfo={this.peopleInfo}/>
+              <SelectedCategory people={this.state.people} />
+            </div>
+        }
       </div>
     );
   }

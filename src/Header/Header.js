@@ -10,7 +10,7 @@ const Header =(props)=> {
       </div>
         <hr></hr>
       <nav>
-        <button>People</button>
+        <button onClick={props.peopleInfo}>People</button>
         <button>Planets</button>
         <button>Vehicles</button>
       </nav>

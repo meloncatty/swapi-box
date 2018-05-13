@@ -1,15 +1,13 @@
-import {updateFilmText, getPeopleInfo, getHomeworldInfo} from './StarWarsRepository'
+import {updateFilmText, getPeopleInfo, getHomeworldInfo, cleanHomeworldInfo, getSpeciesInfo, cleanSpeciesInfo, peopleResult} from './StarWarsRepository'
 
 export default class FetchData {
   constructor() {
     this.filmText = []
     this.people = []
-    this.homeworld = []
   }
 
   fetchInfo = async (resource) => {
-    const url = 'https://swapi.co/api/' + resource + '/'
-    console.log(url)
+    const url = 'https://swapi.co/api/' + resource 
     const response = await fetch(url)
     const resourcePromise = await response.json()
     return resourcePromise
@@ -24,14 +22,29 @@ export default class FetchData {
   fetchPeople = async (resource) => {
     const getInfo = await this.fetchInfo(resource)
     const peopleInfo = await getPeopleInfo(getInfo.results)
-    const getHomeworld = await this.fetchHomeworld(...peopleInfo)
-    this.people = [...peopleInfo]
+    const getHomeworldList = await getHomeworldInfo(peopleInfo)
+    const getHomeworlds = await this.fetchHomeworld(getHomeworldList)
+    const cleanHomeworlds = await cleanHomeworldInfo(getHomeworlds)
+    const getSpeciesList = await getSpeciesInfo(peopleInfo)
+    const getSpecies = await this.fetchSpecies(getSpeciesList)
+    const cleanSpecies = await cleanSpeciesInfo(getSpecies)
+    const finalData = await peopleResult(peopleInfo, cleanHomeworlds, cleanSpecies)
+    this.people = [...finalData]
+    
   }
 
   fetchHomeworld = async (resource) => {
-    const getInfo = getHomeworldInfo(resource)
-    // const getHomeworld = await this.fetchInfo(resourceLink[1])
-    const homeworldInfo = await getHomeworldInfo(getHomeworld.results)
-    this.homeworld = [...homeworldInfo]
+    const homeworlds = await resource.map(homeworld => {
+      return this.fetchInfo(homeworld)
+    })
+    return Promise.all(homeworlds)
+  }
+
+  fetchSpecies = async (resource) => {
+    console.log(resource)
+    const getSpecies = await resource.map(species => {
+      return this.fetchInfo(species)
+    })
+    return Promise.all(getSpecies)
   }
 }

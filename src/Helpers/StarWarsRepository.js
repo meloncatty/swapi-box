@@ -20,13 +20,52 @@ const getPeopleInfo = (people) => {
 }
 
 const getHomeworldInfo = (homeworlds) => {
-  console.log(homeworlds)
+  const homeworldsList = homeworlds.map((person) => {
+    const cleanHomeworldUrl = person.personHomeWorld.split('/api/')
+    return cleanHomeworldUrl[1]
+  })
+  return homeworldsList
 }
+
+const cleanHomeworldInfo = (homeworldInfo) => {
+  return homeworldInfo.map(({name, population}) => (
+    {
+      'homeworld': name,
+      'population': population
+    }
+  ))
+}
+
+const getSpeciesInfo = (species) => {
+  const speciesList = species.map(species => {
+    return species.personSpecies.map(url => {
+      const cleanUrl =  url.split('/api/')
+      return cleanUrl[1]
+    })
+  })
+  console.log(speciesList)
+  return speciesList
+}
+
+const cleanSpeciesInfo = (speciesInfo) => {
+  return speciesInfo.map(({name, language}) => (
+    {
+      'species': name,
+      'language': language
+    }
+  ))
+}
+
+const peopleResult = (people, homeworlds, species) => (people.map(({personName}, idx) => ({personName,  ...homeworlds[idx], ...species[idx] })))
 
 export {
   updateFilmText,
   getPeopleInfo,
-  getHomeworldInfo
+  getHomeworldInfo,
+  cleanHomeworldInfo,
+  getSpeciesInfo,
+  cleanSpeciesInfo,
+  peopleResult
 }
 
 
