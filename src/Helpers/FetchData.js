@@ -1,9 +1,20 @@
-import {updateFilmText, getPeopleInfo, getHomeworldInfo, cleanHomeworldInfo, getSpeciesInfo, cleanSpeciesInfo, peopleResult} from './StarWarsRepository'
+import {
+  updateFilmText, 
+  getPeopleInfo, 
+  getHomeworldInfo, 
+  cleanHomeworldInfo, 
+  getSpeciesInfo, 
+  cleanSpeciesInfo, 
+  peopleResult, 
+  getPlanetInfo, 
+  getResidentsInfo, 
+  planetResult } from './StarWarsRepository'
 
 export default class FetchData {
   constructor() {
     this.filmText = []
     this.people = []
+    this.planets = []
   }
 
   fetchInfo = async (resource) => {
@@ -15,36 +26,56 @@ export default class FetchData {
 
   gatherFilmCrawl = async (resource) => {
     const fetchFilmCrawl = await this.fetchInfo(resource)
-    const films = await updateFilmText(fetchFilmCrawl.results)
+    const films = updateFilmText(fetchFilmCrawl.results)
     this.filmText = [...films]
   }
 
   fetchPeople = async (resource) => {
     const getInfo = await this.fetchInfo(resource)
-    const peopleInfo = await getPeopleInfo(getInfo.results)
-    const getHomeworldList = await getHomeworldInfo(peopleInfo)
+    const peopleInfo = getPeopleInfo(getInfo.results)
+    const getHomeworldList = getHomeworldInfo(peopleInfo)
     const getHomeworlds = await this.fetchHomeworld(getHomeworldList)
-    const cleanHomeworlds = await cleanHomeworldInfo(getHomeworlds)
-    const getSpeciesList = await getSpeciesInfo(peopleInfo)
+    const cleanHomeworlds = cleanHomeworldInfo(getHomeworlds)
+    const getSpeciesList = getSpeciesInfo(peopleInfo)
     const getSpecies = await this.fetchSpecies(getSpeciesList)
-    const cleanSpecies = await cleanSpeciesInfo(getSpecies)
-    const finalData = await peopleResult(peopleInfo, cleanHomeworlds, cleanSpecies)
+    const cleanSpecies = cleanSpeciesInfo(getSpecies)
+    const finalData = peopleResult(peopleInfo, cleanHomeworlds, cleanSpecies)
     this.people = [...finalData]
-    
   }
 
   fetchHomeworld = async (resource) => {
-    const homeworlds = await resource.map(homeworld => {
+    const homeworlds = resource.map(homeworld => {
       return this.fetchInfo(homeworld)
     })
     return Promise.all(homeworlds)
   }
 
   fetchSpecies = async (resource) => {
-    console.log(resource)
-    const getSpecies = await resource.map(species => {
+    const getSpecies = resource.map(species => {
       return this.fetchInfo(species)
     })
     return Promise.all(getSpecies)
   }
+
+  fetchPlanets = async (resource) => {
+    const getInfo = await this.fetchInfo(resource)
+    const planetInfo = getPlanetInfo(getInfo.results)
+    const getResidentsList = getResidentsInfo(planetInfo)
+    const getResidents = await this.fetchResidents(getResidentsList)
+    console.log(getResidents)
+    const finalData = planetResult(planetInfo, getResidents)
+    console.log(finalData)
+    this.planets = [...finalData]
+  }
+
+  fetchResidents = async (resource) => {
+    const getResidents = resource.map(planet => {
+      const cleanList = planet.slice(0, 1)
+      return this.fetchInfo(cleanList)
+    })
+    return Promise.all(getResidents)
+  }
 }
+
+
+//residents is an array of links

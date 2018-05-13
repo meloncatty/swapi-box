@@ -11,7 +11,7 @@ const Header =(props)=> {
         <hr></hr>
       <nav>
         <button onClick={props.peopleInfo}>People</button>
-        <button>Planets</button>
+        <button onClick={props.planetInfo}>Planets</button>
         <button>Vehicles</button>
       </nav>
     </header>

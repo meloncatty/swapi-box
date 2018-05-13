@@ -13,7 +13,8 @@ class App extends Component {
 
     this.state = {
       filmText: [],
-      people: []
+      people: [],
+      planets: []
     }
   }
 
@@ -35,12 +36,19 @@ class App extends Component {
     })
   }
 
+  planetInfo = async() => {
+    const callFetch = await apiInfo.fetchPlanets('planets')
+    this.setState({
+      planets: apiInfo.planets
+    })
+  }
+
   render() {
     return (
       <div className="App">
         {!this.state.people.length
           ? <div>
-              <Header peopleInfo={this.peopleInfo}/>
+              <Header peopleInfo={this.peopleInfo} planetInfo={this.planetInfo}/>
               <LandingPage filmText={this.state.filmText}/>
             </div>
           : <div>
