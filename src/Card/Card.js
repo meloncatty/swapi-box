@@ -1,22 +1,28 @@
 import React from 'react'
 import './Card.css'
+import active from '../images/favorite-active.svg'
+import unactive from '../images/favorite-unactive.svg'
 
 const Card = (props) => {
   const peopleCards = ({person_name, homeworld, language, species, population}) => {
-    return ( 
-      <div>
+    return (
+      <div className='selected-card'>
         <ul>
+        <div className='card-header'>
           <li>
             <h3>{person_name}</h3>
-            <button 
-              className='favorite' 
-              onClick={(e)=> e.preventDefault()}> Favorite
+            <button
+              className='add-favorite'
+              onClick={(e)=> e.preventDefault()}> <img src={unactive} />
             </button>
           </li>
-          <li>Homeworld: {homeworld}</li>
-          <li>Population: {population}</li>
-          <li>Species: {species}</li>
-          <li>Language: {language}</li>
+          </div>
+          <div className='card-body'>
+          <li>Homeworld: <span className='description'>{homeworld}</span></li>
+          <li>Population: <span className='description'>{population}</span></li>
+          <li>Species: <span className='description'>{species}</span></li>
+          <li>Language: <span className='description'>{language}</span></li>
+          </div>
         </ul>
       </div>
     )
@@ -24,19 +30,23 @@ const Card = (props) => {
 
   const planetCards = ({planet_name, terrain, population, resident, climate}) => {
     return (
-      <div>
+      <div className='selected-card'>
         <ul>
+        <div className='card-header'>
           <li>
             <h3>{planet_name}</h3>
-            <button 
-              className='favorite' 
-              onClick={(e)=> e.preventDefault()}> Favorite
+            <button
+              className='add-favorite'
+              onClick={(e)=> e.preventDefault()}> <img src={unactive} />
             </button>
           </li>
-          <li>Terrain: {terrain}</li>
-          <li>Population: {population}</li>
-          <li>Resident: {resident}</li>
-          <li>Climate: {climate}</li>
+          </div>
+          <div className='card-body'>
+          <li>Terrain: <span className='description'>{terrain}</span></li>
+          <li>Population: <span className='description'>{population}</span></li>
+          <li>Resident: <span className='description'>{resident}</span></li>
+          <li>Climate: <span className='description'>{climate}</span></li>
+          </div>
         </ul>
       </div>
     )
@@ -44,18 +54,22 @@ const Card = (props) => {
 
   const vehicleCards = ({vehicle_name, model, passengers, vehicle_class}) => {
     return (
-      <div>
+      <div className='selected-card'>
         <ul>
-          <li>
-            <h3>{vehicle_name}</h3>
-            <button 
-              className='favorite' 
-              onClick={(e)=> e.preventDefault()}> Favorite
-            </button>
-          </li>
-          <li>Model: {model}</li>
-          <li>Passengers: {passengers}</li>
-          <li>Vehicle class: {vehicle_class}</li>
+          <div className='card-header'>
+            <li>
+              <h3>{vehicle_name}</h3>
+              <button
+                className='add-favorite'
+                onClick={(e)=> e.preventDefault()}> <img src={unactive} />
+              </button>
+            </li>
+          </div>
+          <div className='card-body'>
+          <li>Model: <span className='description'>{model}</span></li>
+          <li>Passengers: <span className='description'>{passengers}</span></li>
+          <li>Vehicle class: <span className='description'>{vehicle_class}</span></li>
+          </div>
       </ul>
       </div>
     )
@@ -70,12 +84,8 @@ const Card = (props) => {
       return vehicleCards(props.selectedProps)
     }
   }
-  
-  return (  
-    <div>
-      {createCards(props)}    
-    </div>
-  )
+
+  return createCards(props)
 }
 
 export default Card

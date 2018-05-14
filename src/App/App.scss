@@ -3,4 +3,13 @@
 
 .App {
   width: 100vw;
+  font-family: 'Baloo Paaji', cursive;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:active {
+  background: #E1D6BD;
 }

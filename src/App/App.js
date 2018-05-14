@@ -66,7 +66,7 @@ class App extends Component {
       filmText: [],
       [stateToUpdate[1]]: [],
       [stateToUpdate[2]]: [],
-      isLoading: true
+      isLoading: true,
     })
   }
 
@@ -81,7 +81,7 @@ class App extends Component {
         />
         {this.state.filmText.length
           ?
-            <LandingPage filmText=        {this.state.filmText}/>
+            <LandingPage filmText={this.state.filmText}/>
           :
             <SelectedCategory
               people={this.state.people}

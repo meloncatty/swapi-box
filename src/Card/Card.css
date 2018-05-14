@@ -1,2 +1,42 @@
-.favorite:focus {
-  color: mistyrose; }
+.selected-card {
+  width: 25%;
+  height: 260px;
+  margin: 30px;
+  letter-spacing: .1em; }
+
+ul {
+  list-style-type: none;
+  padding: 0; }
+
+.add-favorite {
+  background: #62ACDD;
+  border-radius: 50px;
+  border: none;
+  width: 15%; }
+
+.card-header li {
+  width: 100%;
+  background: #3C6EBC;
+  padding: 20px;
+  display: flex;
+  height: 30px;
+  justify-content: space-between;
+  align-items: center;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px; }
+
+.card-header h3 {
+  font-size: 1.5em;
+  width: 100%; }
+
+.card-body {
+  padding: 20px;
+  background: #B04731;
+  color: #E1D6BD;
+  width: 100%;
+  font-size: 1.2em;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px; }
+
+.description {
+  color: #000; }
