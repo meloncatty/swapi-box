@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 
 const LandingPage =(props)=> {
   const getCrawl = () => {
@@ -23,6 +24,10 @@ const LandingPage =(props)=> {
       </section>
     </div>
   )
+}
+
+LandingPage.propTypes = {
+  filmText: PropTypes.array.isRequired
 }
 
 export default LandingPage

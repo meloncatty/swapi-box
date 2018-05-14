@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import './Card.css'
 import active from '../images/favorite-active.svg'
 import unactive from '../images/favorite-unactive.svg'
@@ -86,6 +87,10 @@ const Card = (props) => {
   }
 
   return createCards(props)
+}
+
+Card.propTypes = {
+  selectedProps: PropTypes.object.isRequired
 }
 
 export default Card
