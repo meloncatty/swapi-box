@@ -13,7 +13,7 @@ const Card = (props) => {
             <h3>{person_name}</h3>
             <button
               className='add-favorite'
-              onClick={(e)=> e.preventDefault()}> <img src={unactive} />
+              onClick={(e)=> e.preventDefault()}> <img src={unactive} alt='Add or remove favorite' />
             </button>
           </li>
           </div>
@@ -37,7 +37,7 @@ const Card = (props) => {
             <h3>{planet_name}</h3>
             <button
               className='add-favorite'
-              onClick={(e)=> e.preventDefault()}> <img src={unactive} />
+              onClick={(e)=> e.preventDefault()}> <img src={unactive} alt='Add or remove favorite' />
             </button>
           </li>
           </div>
@@ -61,7 +61,7 @@ const Card = (props) => {
               <h3>{vehicle_name}</h3>
               <button
                 className='add-favorite'
-                onClick={(e)=> e.preventDefault()}> <img src={unactive} />
+                onClick={(e)=> e.preventDefault()}> <img src={unactive} alt='Add or remove favorite' />
               </button>
             </li>
           </div>

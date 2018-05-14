@@ -35,7 +35,7 @@ const SelectedCategory = (props) => {
   const loadingStation = () => {
     return (
       <section className='loading-screen'>
-        <img src={chewbacca} />
+        <img src={chewbacca} alt='Data is loading'/>
         <p>Loading</p>
       </section>
     )
