@@ -1,18 +1,17 @@
 const updateFilmText = (movies)=> {
-  const movieList = movies.map(({title, opening_crawl, episode_id}) => {
+  return movies.map(({title, opening_crawl, episode_id}) => {
     return {
       title,
       episode_id,
       opening_crawl
     }
   })
-  return movieList
 }
 
 const getPeopleInfo = (people) => {
   return people.map(({name, homeworld, species}) => (
     {
-      'personName': name,
+      'person_name': name,
       'personHomeWorld': homeworld,
       'personSpecies': species
     }
@@ -20,11 +19,10 @@ const getPeopleInfo = (people) => {
 }
 
 const getHomeworldInfo = (homeworlds) => {
-  const homeworldsList = homeworlds.map((person) => {
+  return homeworlds.map((person) => {
     const cleanHomeworldUrl = person.personHomeWorld.split('/api/')
     return cleanHomeworldUrl[1]
   })
-  return homeworldsList
 }
 
 const cleanHomeworldInfo = (homeworldInfo) => {
@@ -37,14 +35,12 @@ const cleanHomeworldInfo = (homeworldInfo) => {
 }
 
 const getSpeciesInfo = (species) => {
-  const speciesList = species.map(species => {
+  return species.map(species => {
     return species.personSpecies.map(url => {
       const cleanUrl =  url.split('/api/')
       return cleanUrl[1]
     })
   })
-  console.log(speciesList)
-  return speciesList
 }
 
 const cleanSpeciesInfo = (speciesInfo) => {
@@ -56,7 +52,41 @@ const cleanSpeciesInfo = (speciesInfo) => {
   ))
 }
 
-const peopleResult = (people, homeworlds, species) => (people.map(({personName}, idx) => ({personName,  ...homeworlds[idx], ...species[idx] })))
+const peopleResult = (people, homeworlds, species) => (people.map(({person_name}, idx) => ({person_name,  ...homeworlds[idx], ...species[idx] })))
+
+const getPlanetInfo = (planets) => {
+  return planets.map(({name, terrain, population, residents, climate})=> ({
+    'planet_name': name,
+    'terrain': terrain,
+    'population': population,
+    'resident': residents,
+    'climate': climate
+  }))
+}
+
+const getResidentsInfo = (planets) => {
+  return planets.map(planet => {
+    return planet.resident.map(url => {
+      const cleanUrl = url.split('/api/')
+      return cleanUrl[1]
+    })
+  })
+}
+
+const planetResult = (planetInfo, residents) => {
+  const resident = residents.map(resident => resident.name ? resident.name : 'Unknown')
+  return planetInfo.map(
+   ({planet_name, terrain, population, climate}, idx) => ({planet_name, terrain, population, climate,  'resident' : resident[idx] }))}
+
+
+const getVehicleInfo = (vehicles) => {
+  return vehicles.map(({name, model, passengers, vehicle_class}) => ({
+    'vehicle_name': name,
+    'model': model,
+    'passengers': passengers,
+    'vehicle_class': vehicle_class
+  }))
+}
 
 export {
   updateFilmText,
@@ -65,10 +95,9 @@ export {
   cleanHomeworldInfo,
   getSpeciesInfo,
   cleanSpeciesInfo,
-  peopleResult
+  peopleResult,
+  getPlanetInfo,
+  getResidentsInfo,
+  planetResult,
+  getVehicleInfo
 }
-
-
-//first i get people, which gives me name
-//then i need to fetch homeworld, which gives me name and population
-//then i need to fetch species, which gives me name and language
