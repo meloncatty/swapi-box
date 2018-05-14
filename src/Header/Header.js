@@ -6,7 +6,7 @@ class Header extends Component  {
   constructor(props) {
     super(props)
 
-    this.state ={
+    this.state = {
       peopleActive: false,
       planetsActive: false,
       vehiclesActive: false
@@ -36,7 +36,7 @@ class Header extends Component  {
       planetsActive: false
     })
   }
-  
+
   render() {
     return (
       <header>
@@ -50,10 +50,9 @@ class Header extends Component  {
         </div>
         <nav>
           <button
-            className={this.state.peopleActive 
-              ? 'selected select-category' : 'header-button select-category'}
+            className={this.state.peopleActive
+              ? 'selected select-category people-button' : 'header-button select-category people-button'}
             onClick={(e) => {
-              e.preventDefault()
               const {innerHTML} = e.target
               this.props.peopleInfo()
               let cleanEvent = innerHTML.toLowerCase()
@@ -62,7 +61,7 @@ class Header extends Component  {
             }}
           >People</button>
           <button
-            className={this.state.planetsActive 
+            className={this.state.planetsActive
               ? 'selected select-category' : 'header-button select-category'}
             onClick={(e) => {
               const {innerHTML} = e.target
@@ -73,9 +72,10 @@ class Header extends Component  {
             }}
           >Planets</button>
           <button
-            className={this.state.vehiclesActive 
+            className={this.state.vehiclesActive
               ? 'selected select-category' : 'header-button select-category'}
             onClick={(e) => {
+              console.log(this)
               const {innerHTML} = e.target
               this.props.vehicleInfo()
               let cleanEvent = innerHTML.toLowerCase()
