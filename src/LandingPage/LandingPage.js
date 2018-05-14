@@ -3,7 +3,7 @@ import React from 'react'
 const LandingPage =(props)=> {
   const getCrawl = () => {
     if(props.filmText.length) {
-      const random = parseInt(Math.random() * 8)
+      const random = parseInt(Math.random() * 7)
       const randomFilm = props.filmText[random]
       return (
         <div className='crawl'>
