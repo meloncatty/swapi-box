@@ -1,20 +1,20 @@
 import React from 'react'
 import Card from '../Card/Card.js'
-import chewbacca from '../images/chewbacca400.gif'
+import chewbacca from '../images/loading.gif'
 
 const SelectedCategory = (props) => {
   const selectedPeople = (props) => {
     return props.people.map(({...selectedProps}, index) => {
       return <Card key={index} selectedProps={selectedProps} />
-    }) 
+    })
   }
-  
+
   const selectedPlanets = (props) => {
     return props.planets.map(({...selectedProps}, index) => {
       return <Card key={index} selectedProps={selectedProps} />
     })
   }
-  
+
   const selectedVehicles = (props) => {
     return props.vehicles.map(({...selectedProps}, index) => {
       return <Card key={index} selectedProps={selectedProps} />
@@ -30,9 +30,9 @@ const SelectedCategory = (props) => {
       return selectedVehicles(props)
     }
   }
-   
+
   const loadingState = props.isLoading ? <img src={chewbacca} /> : createSelection(props)
-  
+
   return (
     <section className='selected-category'>
       {loadingState}

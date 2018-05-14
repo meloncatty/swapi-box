@@ -4,7 +4,6 @@ import Header from '../Header/Header'
 import './App.css';
 import FetchData from '../Helpers/FetchData.js'
 import SelectedCategory from '../SelectedCategory/SelectedCategory'
-import chewbacca from '../images/chewbacca400.gif'
 
 const apiInfo = new FetchData()
 
@@ -74,7 +73,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header 
+        <Header
           peopleInfo={this.peopleInfo}
           planetInfo={this.planetInfo}
           vehicleInfo={this.vehicleInfo}
@@ -83,8 +82,8 @@ class App extends Component {
         {this.state.filmText.length
           ?
             <LandingPage filmText=        {this.state.filmText}/>
-          : 
-            <SelectedCategory 
+          :
+            <SelectedCategory
               people={this.state.people}
               planets={this.state.planets}
               vehicles={this.state.vehicles}
