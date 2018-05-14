@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import './Card.css'
 import active from '../images/favorite-active.svg'
 import unactive from '../images/favorite-unactive.svg'
@@ -13,7 +14,7 @@ const Card = (props) => {
             <h3>{person_name}</h3>
             <button
               className='add-favorite'
-              onClick={(e)=> e.preventDefault()}> <img src={unactive} />
+              onClick={(e)=> e.preventDefault()}> <img src={unactive} alt='Add or remove favorite' />
             </button>
           </li>
           </div>
@@ -37,7 +38,7 @@ const Card = (props) => {
             <h3>{planet_name}</h3>
             <button
               className='add-favorite'
-              onClick={(e)=> e.preventDefault()}> <img src={unactive} />
+              onClick={(e)=> e.preventDefault()}> <img src={unactive} alt='Add or remove favorite' />
             </button>
           </li>
           </div>
@@ -61,7 +62,7 @@ const Card = (props) => {
               <h3>{vehicle_name}</h3>
               <button
                 className='add-favorite'
-                onClick={(e)=> e.preventDefault()}> <img src={unactive} />
+                onClick={(e)=> e.preventDefault()}> <img src={unactive} alt='Add or remove favorite' />
               </button>
             </li>
           </div>
@@ -86,6 +87,10 @@ const Card = (props) => {
   }
 
   return createCards(props)
+}
+
+Card.propTypes = {
+  selectedProps: PropTypes.object.isRequired
 }
 
 export default Card

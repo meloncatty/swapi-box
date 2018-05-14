@@ -1,5 +1,6 @@
 import React from 'react'
 import Card from '../Card/Card.js'
+import PropTypes from 'prop-types';
 import chewbacca from '../images/loading.gif'
 import './SelectedCategory.css'
 
@@ -35,7 +36,7 @@ const SelectedCategory = (props) => {
   const loadingStation = () => {
     return (
       <section className='loading-screen'>
-        <img src={chewbacca} />
+        <img src={chewbacca} alt='Data is loading'/>
         <p>Loading</p>
       </section>
     )
@@ -51,6 +52,12 @@ const SelectedCategory = (props) => {
     </section>
   )
 
+}
+
+SelectedCategory.propTypes = {
+  people: PropTypes.array.isRequired,
+  planets: PropTypes.array.isRequired,
+  vehicles: PropTypes.array.isRequired
 }
 
 export default SelectedCategory

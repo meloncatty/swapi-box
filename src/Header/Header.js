@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import logo from '../images/logo.svg'
 
 class Header extends Component  {
@@ -88,4 +89,10 @@ class Header extends Component  {
   }
 }
 
+Header.propTypes = {
+  peopleInfo: PropTypes.func.isRequired,
+  planetInfo: PropTypes.func.isRequired,
+  vehicleInfo: PropTypes.func.isRequired,
+  updateSelectedState: PropTypes.func.isRequired
+}
 export default Header
