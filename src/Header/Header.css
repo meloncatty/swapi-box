@@ -2,14 +2,40 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 55rem; }
+  align-self: flex-end;
+  width: 75rem; }
 
 .favorites {
-  align-content: flex-end; }
+  width: 40em;
+  height: 2.5em;
+  align-self: flex-start; }
+
+.select-category {
+  width: 10em;
+  height: 2.5em;
+  margin: 10px; }
+
+.header-button {
+  border: 3px solid #62ACDD;
+  background: #62ACDD;
+  border-radius: 45px;
+  outline: 0;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  font-size: 1em;
+  padding: 0;
+  letter-spacing: .4em;
+  text-transform: uppercase;
+  font-family: 'Baloo Paaji', cursive; }
+
+.logo {
+  width: 90%;
+  height: 90%; }
 
 header {
   display: flex;
   flex-direction: column;
   text-align: center;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  background-color: #3C6EBC;
+  padding: 20px; }
