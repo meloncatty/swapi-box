@@ -10,4 +10,4 @@ For this solo project our goals were to get comfortable with promises and fetch 
 
 ### My Comp
 
-![swap-orig](https://user-images.githubusercontent.com/11744547/40002519-40642c7c-574e-11e8-9df3-fa81eae57dac.png)
+![swap-orig03](https://user-images.githubusercontent.com/11744547/40002685-a37162c6-574e-11e8-97a2-1ac1272a4f82.png)
