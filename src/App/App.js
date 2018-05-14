@@ -14,7 +14,8 @@ class App extends Component {
     this.state = {
       filmText: [],
       people: [],
-      planets: []
+      planets: [],
+      vehicles: []
     }
   }
 
@@ -32,6 +33,7 @@ class App extends Component {
   peopleInfo = async() => {
     const callFetch = await apiInfo.fetchPeople('people')
     this.setState({
+      filmText: this.state.filmText,
       people: apiInfo.people
     })
   }
@@ -39,22 +41,49 @@ class App extends Component {
   planetInfo = async() => {
     const callFetch = await apiInfo.fetchPlanets('planets')
     this.setState({
+      filmText: this.state.filmText,
       planets: apiInfo.planets
+    })
+  }
+
+  vehicleInfo = async() => {
+    const callFetch = await apiInfo.fetchVehicles('vehicles')
+    this.setState({
+      filmText: this.state.filmText,
+      vehicles: apiInfo.vehicles
+    })
+  }
+
+  updateSelectedState=(e)=> {
+    const cleanEvent = e.target.innerHTML.toLowerCase()
+    const stateKeys = Object.keys(this.state)
+    const stateToUpdate = stateKeys.filter(key => key !== cleanEvent)
+    this.setState({
+      filmText: [],
+      [stateToUpdate[1]]: [],
+      [stateToUpdate[2]]: []
     })
   }
 
   render() {
     return (
       <div className="App">
-        {!this.state.people.length
-          ? <div>
-              <Header peopleInfo={this.peopleInfo} planetInfo={this.planetInfo}/>
+        <Header 
+          peopleInfo={this.peopleInfo}
+          planetInfo={this.planetInfo}
+          vehicleInfo={this.vehicleInfo}
+          updateSelectedState={this.updateSelectedState}
+        />
+        {this.state.filmText.length
+          ?
               <LandingPage filmText={this.state.filmText}/>
-            </div>
-          : <div>
-              <Header peopleInfo={this.peopleInfo}/>
-              <SelectedCategory people={this.state.people} />
-            </div>
+          
+          : 
+              <SelectedCategory 
+                people={this.state.people}
+                planets={this.state.planets}
+                vehicles={this.state.vehicles}/>
+          
         }
       </div>
     );

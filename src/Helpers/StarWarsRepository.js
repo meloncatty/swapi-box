@@ -11,7 +11,7 @@ const updateFilmText = (movies)=> {
 const getPeopleInfo = (people) => {
   return people.map(({name, homeworld, species}) => (
     {
-      'personName': name,
+      'person_name': name,
       'personHomeWorld': homeworld,
       'personSpecies': species
     }
@@ -52,21 +52,21 @@ const cleanSpeciesInfo = (speciesInfo) => {
   ))
 }
 
-const peopleResult = (people, homeworlds, species) => (people.map(({personName}, idx) => ({personName,  ...homeworlds[idx], ...species[idx] })))
+const peopleResult = (people, homeworlds, species) => (people.map(({person_name}, idx) => ({person_name,  ...homeworlds[idx], ...species[idx] })))
 
 const getPlanetInfo = (planets) => {
   return planets.map(({name, terrain, population, residents, climate})=> ({
-    'name': name,
+    'planet_name': name,
     'terrain': terrain,
     'population': population,
-    'residents': residents,
+    'resident': residents,
     'climate': climate
   }))
 }
 
 const getResidentsInfo = (planets) => {
   return planets.map(planet => {
-    return planet.residents.map(url => {
+    return planet.resident.map(url => {
       const cleanUrl = url.split('/api/')
       return cleanUrl[1]
     })
@@ -76,10 +76,16 @@ const getResidentsInfo = (planets) => {
 const planetResult = (planetInfo, residents) => {
   const resident = residents.map(resident => resident.name ? resident.name : 'Unknown')
   return planetInfo.map(
-   ({name, terrain, population, climate}, idx) => ({name, terrain, population, climate,  'resident' : resident[idx] }))}
+   ({planet_name, terrain, population, climate}, idx) => ({planet_name, terrain, population, climate,  'resident' : resident[idx] }))}
 
-const cleanResidents = (residents) => {
-  return residents.filter(resident => resident.name)
+
+const getVehicleInfo = (vehicles) => {
+  return vehicles.map(({name, model, passengers, vehicle_class}) => ({
+    'vehicle_name': name,
+    'model': model,
+    'passengers': passengers,
+    'vehicle_class': vehicle_class
+  }))
 }
 
 export {
@@ -92,5 +98,6 @@ export {
   peopleResult,
   getPlanetInfo,
   getResidentsInfo,
-  planetResult
+  planetResult,
+  getVehicleInfo
 }

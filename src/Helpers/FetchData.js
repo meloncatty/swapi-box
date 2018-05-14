@@ -8,13 +8,15 @@ import {
   peopleResult, 
   getPlanetInfo, 
   getResidentsInfo, 
-  planetResult } from './StarWarsRepository'
+  planetResult,
+  getVehicleInfo } from './StarWarsRepository'
 
 export default class FetchData {
   constructor() {
     this.filmText = []
     this.people = []
     this.planets = []
+    this.vehicles = []
   }
 
   fetchInfo = async (resource) => {
@@ -62,20 +64,23 @@ export default class FetchData {
     const planetInfo = getPlanetInfo(getInfo.results)
     const getResidentsList = getResidentsInfo(planetInfo)
     const getResidents = await this.fetchResidents(getResidentsList)
-    console.log(getResidents)
     const finalData = planetResult(planetInfo, getResidents)
     console.log(finalData)
     this.planets = [...finalData]
   }
 
   fetchResidents = async (resource) => {
-    const getResidents = resource.map(planet => {
+    const getResident = resource.map(planet => {
       const cleanList = planet.slice(0, 1)
       return this.fetchInfo(cleanList)
     })
-    return Promise.all(getResidents)
+    return Promise.all(getResident)
+  }
+
+  fetchVehicles = async (resource) => {
+    const getInfo = await this.fetchInfo(resource)
+    const vehicleInfo = getVehicleInfo(getInfo.results)
+    this.vehicles = [...vehicleInfo]
   }
 }
 
-
-//residents is an array of links

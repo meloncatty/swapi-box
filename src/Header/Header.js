@@ -6,13 +6,29 @@ const Header =(props)=> {
     <header>
       <div className='title'>
         <h1>SWAPI-Box</h1>
-        <button className='favorites'>View Favorites <span>0</span></button>
+        <button 
+          className='favorites'>
+          View Favorites
+          <span>0</span>
+        </button>
       </div>
         <hr></hr>
       <nav>
-        <button onClick={props.peopleInfo}>People</button>
-        <button onClick={props.planetInfo}>Planets</button>
-        <button>Vehicles</button>
+        <button onClick={(e) => {
+            props.peopleInfo()
+            props.updateSelectedState(e) 
+          }}
+        >People</button>
+        <button onClick={(e) => {
+            props.planetInfo()
+            props.updateSelectedState(e) 
+          }}
+        >Planets</button>
+        <button onClick={(e) => {
+            props.vehicleInfo()
+            props.updateSelectedState(e) 
+          }}
+        >Vehicles</button>
       </nav>
     </header>
   )
