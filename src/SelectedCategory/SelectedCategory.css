@@ -1,0 +1,27 @@
+.selected-category {
+  background: #15131A;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
+  padding-bottom: 50px; }
+
+.loading-screen {
+  height: 100vh;
+  color: #E1D6BD;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
+.loading-screen img {
+  height: 20%; }
+
+.category-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  justify-content: space-around;
+  align-items: center;
+  overflow: auto; }

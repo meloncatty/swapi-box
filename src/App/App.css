@@ -1,12 +1,11 @@
 .title {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   align-self: flex-end;
   width: 75rem; }
 
-.favorites {
-  width: 40em;
+.view-favorites {
+  width: 42em;
   height: 2.5em;
   align-self: flex-start; }
 
@@ -14,6 +13,17 @@
   width: 10em;
   height: 2.5em;
   margin: 10px; }
+
+.selected {
+  border: 3px solid #62ACDD;
+  background: #E1D6BD;
+  border-radius: 45px;
+  outline: 0;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  font-size: 1em;
+  padding: 0;
+  letter-spacing: .4em;
+  text-transform: uppercase; }
 
 .header-button {
   border: 3px solid #62ACDD;
@@ -24,12 +34,12 @@
   font-size: 1em;
   padding: 0;
   letter-spacing: .4em;
-  text-transform: uppercase;
-  font-family: 'Baloo Paaji', cursive; }
+  text-transform: uppercase; }
 
 .logo {
   width: 90%;
-  height: 90%; }
+  height: 90%;
+  align-self: center; }
 
 header {
   display: flex;
@@ -38,12 +48,13 @@ header {
   justify-content: center;
   align-items: center;
   background-color: #3C6EBC;
-  padding: 20px; }
+  padding: 40px;
+  height: 50%; }
 
 .comp-container {
   width: 100%;
   height: 100%;
-  background: #000;
+  background: #15131A;
   overflow: hidden; }
 
 .fade {
@@ -91,4 +102,11 @@ header {
     transform: rotateX(25deg) translateZ(-2500px); } }
 
 .App {
-  width: 100vw; }
+  width: 100vw;
+  font-family: 'Baloo Paaji', cursive; }
+
+button {
+  cursor: pointer; }
+
+button:active {
+  background: #E1D6BD; }

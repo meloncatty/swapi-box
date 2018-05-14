@@ -1,6 +1,7 @@
 import React from 'react'
 import Card from '../Card/Card.js'
 import chewbacca from '../images/loading.gif'
+import './SelectedCategory.css'
 
 const SelectedCategory = (props) => {
   const selectedPeople = (props) => {
@@ -31,11 +32,22 @@ const SelectedCategory = (props) => {
     }
   }
 
-  const loadingState = props.isLoading ? <img src={chewbacca} /> : createSelection(props)
+  const loadingStation = () => {
+    return (
+      <section className='loading-screen'>
+        <img src={chewbacca} />
+        <p>Loading</p>
+      </section>
+    )
+  }
+
+  const loadingState = props.isLoading ?  loadingStation() : createSelection(props)
 
   return (
     <section className='selected-category'>
+      <div className='category-container'>
       {loadingState}
+      </div>
     </section>
   )
 
