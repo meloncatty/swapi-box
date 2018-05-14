@@ -65,7 +65,6 @@ export default class FetchData {
     const getResidentsList = getResidentsInfo(planetInfo)
     const getResidents = await this.fetchResidents(getResidentsList)
     const finalData = planetResult(planetInfo, getResidents)
-    console.log(finalData)
     this.planets = [...finalData]
   }
 
