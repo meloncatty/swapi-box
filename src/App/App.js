@@ -24,7 +24,7 @@ class App extends Component {
     this.filmInfo()
   }
 
-  filmInfo = async() => {
+  filmInfo =  async() => {
     const callFetch = await apiInfo.gatherFilmCrawl('films')
     this.setState({
       filmText: apiInfo.filmText
