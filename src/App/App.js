@@ -4,6 +4,7 @@ import Header from '../Header/Header'
 import './App.css';
 import FetchData from '../Helpers/FetchData.js'
 import SelectedCategory from '../SelectedCategory/SelectedCategory'
+import chewbacca from '../images/chewbacca400.gif'
 
 const apiInfo = new FetchData()
 
@@ -15,7 +16,8 @@ class App extends Component {
       filmText: [],
       people: [],
       planets: [],
-      vehicles: []
+      vehicles: [],
+      isLoading: true
     }
   }
 
@@ -34,7 +36,8 @@ class App extends Component {
     const callFetch = await apiInfo.fetchPeople('people')
     this.setState({
       filmText: this.state.filmText,
-      people: apiInfo.people
+      people: apiInfo.people,
+      isLoading: false
     })
   }
 
@@ -42,7 +45,8 @@ class App extends Component {
     const callFetch = await apiInfo.fetchPlanets('planets')
     this.setState({
       filmText: this.state.filmText,
-      planets: apiInfo.planets
+      planets: apiInfo.planets,
+      isLoading: false
     })
   }
 
@@ -50,7 +54,8 @@ class App extends Component {
     const callFetch = await apiInfo.fetchVehicles('vehicles')
     this.setState({
       filmText: this.state.filmText,
-      vehicles: apiInfo.vehicles
+      vehicles: apiInfo.vehicles,
+      isLoading: false
     })
   }
 
@@ -61,7 +66,8 @@ class App extends Component {
     this.setState({
       filmText: [],
       [stateToUpdate[1]]: [],
-      [stateToUpdate[2]]: []
+      [stateToUpdate[2]]: [],
+      isLoading: true
     })
   }
 
@@ -76,14 +82,13 @@ class App extends Component {
         />
         {this.state.filmText.length
           ?
-              <LandingPage filmText={this.state.filmText}/>
-          
+            <LandingPage filmText=        {this.state.filmText}/>
           : 
-              <SelectedCategory 
-                people={this.state.people}
-                planets={this.state.planets}
-                vehicles={this.state.vehicles}/>
-          
+            <SelectedCategory 
+              people={this.state.people}
+              planets={this.state.planets}
+              vehicles={this.state.vehicles}
+              isLoading={this.state.isLoading}/>
         }
       </div>
     );

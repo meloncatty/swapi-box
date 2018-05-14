@@ -1,5 +1,6 @@
 import React from 'react'
 import Card from '../Card/Card.js'
+import chewbacca from '../images/chewbacca400.gif'
 
 const SelectedCategory = (props) => {
   const selectedPeople = (props) => {
@@ -30,9 +31,11 @@ const SelectedCategory = (props) => {
     }
   }
    
+  const loadingState = props.isLoading ? <img src={chewbacca} /> : createSelection(props)
+  
   return (
     <section className='selected-category'>
-      {createSelection(props)}
+      {loadingState}
     </section>
   )
 
