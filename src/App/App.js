@@ -16,7 +16,7 @@ class App extends Component {
       people: [],
       planets: [],
       vehicles: [],
-      isLoading: true
+      isLoading: true,
     }
   }
 
@@ -54,19 +54,18 @@ class App extends Component {
     this.setState({
       filmText: this.state.filmText,
       vehicles: apiInfo.vehicles,
-      isLoading: false
+      isLoading: false,
     })
   }
 
   updateSelectedState=(e)=> {
-    const cleanEvent = e.target.innerHTML.toLowerCase()
     const stateKeys = Object.keys(this.state)
-    const stateToUpdate = stateKeys.filter(key => key !== cleanEvent)
+    const stateToUpdate = stateKeys.filter(key => key !== e)
     this.setState({
       filmText: [],
       [stateToUpdate[1]]: [],
       [stateToUpdate[2]]: [],
-      isLoading: true,
+      isLoading: true
     })
   }
 

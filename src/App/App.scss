@@ -2,14 +2,6 @@
 @import '../LandingPage/LandingPage.scss';
 
 .App {
-  width: 100vw;
+  width: 100%;
   font-family: 'Baloo Paaji', cursive;
-}
-
-button {
-  cursor: pointer;
-}
-
-button:active {
-  background: #E1D6BD;
 }
