@@ -6,12 +6,15 @@
 .view-favorites {
   width: 22em;
   height: 2.5em;
-  align-self: flex-end; }
+  align-self: flex-end;
+  font-weight: 700;
+  opacity: .4; }
 
 .select-category {
   width: 10em;
   height: 2.5em;
-  margin: 10px; }
+  margin: 10px;
+  font-weight: 700; }
 
 .selected {
   cursor: pointer;
@@ -108,4 +111,5 @@ nav {
 
 .App {
   width: 100%;
-  font-family: 'Baloo Paaji', cursive; }
+  font-family: 'Baloo Paaji', cursive;
+  font-weight: bold; }

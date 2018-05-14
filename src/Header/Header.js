@@ -38,7 +38,7 @@ class Header extends Component  {
   
   render() {
     return (
-      <header >
+      <header>
         <button
             className='view-favorites header-button'>
             View Favorites

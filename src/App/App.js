@@ -16,7 +16,7 @@ class App extends Component {
       people: [],
       planets: [],
       vehicles: [],
-      isLoading: true,
+      isLoading: true
     }
   }
 
@@ -86,7 +86,8 @@ class App extends Component {
               people={this.state.people}
               planets={this.state.planets}
               vehicles={this.state.vehicles}
-              isLoading={this.state.isLoading}/>
+              isLoading={this.state.isLoading}
+            />
         }
       </div>
     );

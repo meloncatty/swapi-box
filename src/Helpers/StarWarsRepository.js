@@ -80,12 +80,18 @@ const planetResult = (planetInfo, residents) => {
 
 
 const getVehicleInfo = (vehicles) => {
-  return vehicles.map(({name, model, passengers, vehicle_class}) => ({
-    'vehicle_name': name,
-    'model': model,
-    'passengers': passengers,
-    'vehicle_class': vehicle_class
-  }))
+  return vehicles.map(({name, model, passengers, vehicle_class}) =>  {
+    console.log(name)
+    const cleanName = name.split(' ').slice(0, 3).join(' ')
+    const vehicleObject =
+      {
+        'vehicle_name': cleanName,
+        'model': model,
+        'passengers': passengers,
+        'vehicle_class': vehicle_class
+      }
+    return vehicleObject
+  })
 }
 
 export {
