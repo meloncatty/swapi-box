@@ -1,13 +1,13 @@
 .selected-card {
   width: 25%;
-  height: 260px;
-  margin: 30px;
+  margin: 5px;
   letter-spacing: .1em;
 }
 
 ul {
   list-style-type: none;
   padding: 0;
+  width: 100%;
 }
 
 .add-favorite {
@@ -42,6 +42,7 @@ ul {
   font-size: 1.5em;
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
+  // margin-bottom: 20px;
 }
 
 .description {
